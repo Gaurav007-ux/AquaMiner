@@ -32,9 +32,9 @@ AquaMiner is an end-to-end intelligent marine exploration system that combines c
 
 | Assembled Unit | Electronics & Sensor Array |
 |:---:|:---:|
-| <img src="photo/Hardware/WhatsApp%20Image%202026-09-09%20at%202.16.23%20PM.jpeg" width="380" alt="AquaYantra Hardware 1"/> | <img src="photo/Hardware/WhatsApp%20Image%202026-09-09%20at%202.16.33%20PM.jpeg" width="380" alt="AquaYantra Hardware 2"/> |
-| <img src="photo/Hardware/WhatsApp%20Image%202026-09-09%20at%202.16.59%20PM.jpeg" width="380" alt="AquaYantra Hardware 3"/> | <img src="photo/Hardware/WhatsApp%20Image%202026-09-09%20at%202.18.00%20PM.jpeg" width="380" alt="AquaYantra Hardware 4"/> |
-| <img src="photo/Hardware/WhatsApp%20Image%202026-09-09%20at%202.18.03%20PM.jpeg" width="380" alt="AquaYantra Hardware 5"/> | <img src="photo/Hardware/WhatsApp%20Image%202026-09-09%20at%202.20.37%20PM.jpeg" width="380" alt="AquaYantra Hardware 6"/> |
+| <img src="photo/Hardware/Image%201.jpeg" width="380" alt="AquaYantra Hardware 1"/> | <img src="photo/Hardware/Image%202.jpeg" width="380" alt="AquaYantra Hardware 2"/> |
+| <img src="photo/Hardware/Image%203.jpeg" width="380" alt="AquaYantra Hardware 3"/> | <img src="photo/Hardware/Image%204.jpeg" width="380" alt="AquaYantra Hardware 4"/> |
+| <img src="photo/Hardware/Image%205.jpeg" width="380" alt="AquaYantra Hardware 5"/> | <img src="photo/Hardware/Image%206.jpeg" width="380" alt="AquaYantra Hardware 6"/> |
 
 ---
 
