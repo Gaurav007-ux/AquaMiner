@@ -1,0 +1,64 @@
+version: "3.9"
+
+services:
+  # ── PostgreSQL + PostGIS ─────────────────────────────────
+  db:
+    image: postgis/postgis:16-3.4
+    container_name: aquayantra-db
+    environment:
+      POSTGRES_USER: aquayantra
+      POSTGRES_PASSWORD: aquayantra
+      POSTGRES_DB: aquayantra
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U aquayantra"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  # ── Redis ────────────────────────────────────────────────
+  redis:
+    image: redis:7-alpine
+    container_name: aquayantra-redis
+    ports:
+      - "6379:6379"
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  # ── AquaYantra Backend ────────────────────────────────────
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: aquayantra-backend
+    ports:
+      - "8000:8000"
+    environment:
+      DATABASE_URL: postgresql+asyncpg://aquayantra:aquayantra@db:5432/aquayantra
+      REDIS_URL: redis://redis:6379/0
+      REDIS_ENABLED: "true"
+      JWT_SECRET: change-me-in-production-use-a-long-secret
+      CORS_ORIGINS: "http://localhost:3000,http://localhost:5173,http://localhost:8080"
+      LOG_LEVEL: INFO
+      ENVIRONMENT: production
+      DEBUG: "false"
+    depends_on:
+      db:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    volumes:
+      - uploads:/app/uploads
+      - models:/app/models
+    restart: unless-stopped
+
+volumes:
+  pgdata:
+  uploads:
+  models:

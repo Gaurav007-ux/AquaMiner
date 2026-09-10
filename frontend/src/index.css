@@ -1,0 +1,283 @@
+/* ============================================================
+   AquaYantra — Global Styles & Design System
+   Dark oceanic command-center theme
+   ============================================================ */
+
+@import "tailwindcss";
+
+/* ── CSS Custom Properties ─────────────────────────────────── */
+
+:root {
+  /* Backgrounds */
+  --bg-void: #060a13;
+  --bg-deep: #0a0e17;
+  --bg-surface: #0f1623;
+  --bg-card: #141c2e;
+  --bg-elevated: #1a2540;
+  --bg-hover: #1e2d4a;
+
+  /* Borders */
+  --border-subtle: #1a2540;
+  --border-medium: #243352;
+  --border-strong: #2a3f6b;
+
+  /* Accent */
+  --cyan-50: #ecfeff;
+  --cyan-100: #cffafe;
+  --cyan-200: #a5f3fc;
+  --cyan-300: #67e8f9;
+  --cyan-400: #22d3ee;
+  --cyan-500: #06b6d4;
+  --cyan-600: #0891b2;
+  --cyan-700: #0e7490;
+
+  /* Status */
+  --green-400: #4ade80;
+  --green-500: #22c55e;
+  --amber-400: #fbbf24;
+  --amber-500: #f59e0b;
+  --red-400: #f87171;
+  --red-500: #ef4444;
+  --blue-400: #60a5fa;
+  --blue-500: #3b82f6;
+
+  /* Text */
+  --text-primary: #f1f5f9;
+  --text-secondary: #94a3b8;
+  --text-muted: #64748b;
+  --text-faint: #475569;
+
+  /* Typography */
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+
+  /* Spacing */
+  --sidebar-width: 240px;
+  --sidebar-collapsed: 64px;
+  --topbar-height: 52px;
+}
+
+/* ── Base ───────────────────────────────────────────────────── */
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 14px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-sans);
+  background: var(--bg-void);
+  color: var(--text-primary);
+  overflow: hidden;
+  height: 100vh;
+}
+
+#root {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ── Scrollbar ─────────────────────────────────────────────── */
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-deep);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border-strong);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--cyan-700);
+}
+
+/* ── Utility Classes ───────────────────────────────────────── */
+
+.font-mono {
+  font-family: var(--font-mono);
+}
+
+.text-cyan {
+  color: var(--cyan-400);
+}
+
+.text-status-healthy {
+  color: var(--green-400);
+}
+
+.text-status-warning {
+  color: var(--amber-400);
+}
+
+.text-status-fault {
+  color: var(--red-400);
+}
+
+.bg-surface {
+  background: var(--bg-surface);
+}
+
+.bg-card {
+  background: var(--bg-card);
+}
+
+.bg-elevated {
+  background: var(--bg-elevated);
+}
+
+.border-subtle {
+  border-color: var(--border-subtle);
+}
+
+.border-medium {
+  border-color: var(--border-medium);
+}
+
+/* ── Card System ───────────────────────────────────────────── */
+
+.card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: 8px;
+  padding: 16px;
+}
+
+.card-elevated {
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-medium);
+  border-radius: 8px;
+  padding: 16px;
+}
+
+.card-interactive {
+  transition: border-color 0.2s ease, background-color 0.15s ease;
+}
+
+.card-interactive:hover {
+  border-color: var(--border-strong);
+  background: var(--bg-elevated);
+}
+
+/* ── Glow Effects (subtle) ─────────────────────────────────── */
+
+.glow-cyan {
+  box-shadow: 0 0 12px rgba(34, 211, 238, 0.08),
+              0 0 4px rgba(34, 211, 238, 0.04);
+}
+
+.glow-anomaly {
+  box-shadow: 0 0 16px rgba(251, 191, 36, 0.12),
+              0 0 6px rgba(251, 191, 36, 0.06);
+}
+
+.glow-critical {
+  box-shadow: 0 0 16px rgba(239, 68, 68, 0.12),
+              0 0 6px rgba(239, 68, 68, 0.06);
+}
+
+/* ── Pulse Animation ───────────────────────────────────────── */
+
+@keyframes subtle-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+.animate-subtle-pulse {
+  animation: subtle-pulse 2s ease-in-out infinite;
+}
+
+@keyframes dot-pulse {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.5); opacity: 0.5; }
+}
+
+.animate-dot-pulse {
+  animation: dot-pulse 1.5s ease-in-out infinite;
+}
+
+/* ── Telemetry Number Display ──────────────────────────────── */
+
+.telemetry-value {
+  font-family: var(--font-mono);
+  font-weight: 600;
+  font-size: 1.5rem;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
+}
+
+.telemetry-value-lg {
+  font-size: 2rem;
+}
+
+.telemetry-value-sm {
+  font-size: 1.125rem;
+}
+
+.telemetry-label {
+  font-size: 0.6875rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+}
+
+.telemetry-unit {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  margin-left: 4px;
+}
+
+/* ── Section Headers ───────────────────────────────────────── */
+
+.section-header {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-muted);
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--border-subtle);
+  margin-bottom: 12px;
+}
+
+/* ── MapLibre Overrides ────────────────────────────────────── */
+
+.maplibregl-ctrl-group {
+  background: var(--bg-card) !important;
+  border: 1px solid var(--border-medium) !important;
+  border-radius: 6px !important;
+}
+
+.maplibregl-ctrl-group button {
+  background: transparent !important;
+  border-color: var(--border-subtle) !important;
+}
+
+.maplibregl-ctrl-group button:hover {
+  background: var(--bg-elevated) !important;
+}
+
+/* ── Reduced Motion ────────────────────────────────────────── */
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-subtle-pulse,
+  .animate-dot-pulse {
+    animation: none;
+  }
+}
